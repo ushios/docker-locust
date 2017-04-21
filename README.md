@@ -1,7 +1,27 @@
 # docker-locust
 
+## Get started
+
+Create Dockerfile and locustfile.py
+
+Dockerfile sample
+```Dockerfile
+FROM ushios/locust
+
+COPY ./locustfile.py locustfile.py
 ```
-$ docker run ushios/locust
+
+Running image.
+```
+$ docker run -p 8089:8089 \
+  -e LOCUSTFILE=locustfile.py \
+  -e TARGET_HOST=http://localhost \
+  ushios/locust
+```
+
+Open locust admin web page.
+```bash
+$ open http://localhost:8089
 ```
 
 # Developers

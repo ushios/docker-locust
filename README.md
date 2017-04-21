@@ -9,6 +9,8 @@ $ docker run ushios/locust
 ### Build and run
 
 ```
-$ docker build -t locust .
-$ docker run locust
+$ docker-compose build
+$ docker-compose up -d
+
+$ open http://localhost:18080
 ```

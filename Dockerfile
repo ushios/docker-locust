@@ -1,7 +1,9 @@
 FROM python:3.6-alpine
 LABEL maintainer "UshioShugo<ushio.s@gmail.com>"
 
-ENV SOURCE_DIR /opt/locust
+ENV SOURCE_DIR="/opt/locust" \
+    LOCUSTFILE="locustfile.py" \
+    TARGET_HOST="http://localhost"
 
 EXPOSE 5557 5558 8089
 
@@ -18,4 +20,4 @@ ADD . $SOURCE_DIR
 
 RUN chmod -R 755 $SOURCE_DIR
 
-ENTRYPOINT ["locust", "--host=http://localhost"]
+ENTRYPOINT ["./run.sh"]

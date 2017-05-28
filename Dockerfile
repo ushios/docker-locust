@@ -1,9 +1,7 @@
 FROM python:3.6-alpine
 LABEL maintainer "UshioShugo<ushio.s@gmail.com>"
 
-ENV SOURCE_DIR="/opt/locust" \
-    LOCUSTFILE="locustfile.py" \
-    TARGET_HOST="http://localhost"
+ENV SOURCE_DIR="/opt/locust"
 
 EXPOSE 5557 5558 8089
 
@@ -16,8 +14,7 @@ RUN apk update && \
 
 
 WORKDIR $SOURCE_DIR
-ADD . $SOURCE_DIR
 
 RUN chmod -R 755 $SOURCE_DIR
 
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["locust"]

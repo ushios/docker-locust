@@ -1,11 +1,16 @@
-version: '2'
+version: '3'
 services:
   master:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      LOCUSTFILE: locustfile.py
-      TARGET_HOST: http://localhost
     ports:
       - 18080:8089
+    volumes:
+      - .:/opt/locust
+    entrypoint:
+      - locust
+      - --locustfile
+      - locustfile.py
+      - --host
+      - http://localhost
